@@ -10,15 +10,7 @@ namespace MinGyuBlazor.Pages
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
-#nullable restore
-#line 1 "/Users/codingstar/MinGyuBlazor/_Imports.razor"
-using System.Net.Http;
-
-#line default
-#line hidden
-#nullable disable
 #nullable restore
 #line 2 "/Users/codingstar/MinGyuBlazor/_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
@@ -82,6 +74,34 @@ using MinGyuBlazor.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "/Users/codingstar/MinGyuBlazor/Pages/Index.razor"
+using System.Net.Http;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "/Users/codingstar/MinGyuBlazor/Pages/Index.razor"
+using System.Net.Http.Json;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "/Users/codingstar/MinGyuBlazor/Pages/Index.razor"
+using System.Text;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "/Users/codingstar/MinGyuBlazor/Pages/Index.razor"
+using System.Threading.Tasks;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -90,6 +110,33 @@ using MinGyuBlazor.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 20 "/Users/codingstar/MinGyuBlazor/Pages/Index.razor"
+       
+
+    string dataA = "";
+    GaSu response;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await getData();
+    }
+
+    private async Task getData()
+    {
+        response = await Http.GetFromJsonAsync<GaSu>("https://mingyufun.azurewebsites.net/api/GetJson?code=uANZ7/C0aQ7fMXLr2X90bzHN7AYS15mlSbuQ6UXkV68asPaH4EhXpQ==");
+
+        dataA = response.name;
+    }
+    public class GaSu
+    {
+        public string name { get; set; }
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }
 #pragma warning restore 1591
